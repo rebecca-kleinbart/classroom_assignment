@@ -11,10 +11,9 @@ How can teachers be assigned to classrooms in "the best" way or in a "good" way 
 ### Constraints
 
 
-The below is a screenshot of the game after both players, blue and brown, have
-placed their pieces.
 
-![Setup screenshot](Images/FeudalSetup1.png)
+![Setup screenshot](images/weight_zero_bipartite_winter.png)
+![Setup screenshot](images/weight_zero_bipartite.png.png)
 
 
 
