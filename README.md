@@ -12,8 +12,10 @@ How can teachers be assigned to classrooms in "the best" way or in a "good" way 
 
 
 
+### Weights
+
 ![Setup screenshot](images/weight_zero_bipartite_winter.png)
-![Setup screenshot](images/weight_zero_bipartite.png.png)
+![Setup screenshot](images/weight_zero_bipartite.png)
 
 
 
