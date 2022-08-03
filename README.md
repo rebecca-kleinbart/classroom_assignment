@@ -18,7 +18,7 @@ Teacher preferences (acquired by interviewing actual teachers), administrative p
 
 
 ### Algorithms 
-### Brute Force 
+#### Brute Force 
 A naive approach might be to systematically try every combination and compare the weighted values, ultimately choosing the assignment(s) that have the least weight. This approach would take O(n!) in the size of the input which is clearly untenable for even medium-sized inputs, however logical and easy-to-understand. 
 
 #### Kuhn-Munkres Algorithm (also known as the Munkres or Hungarian Algorithm) 
