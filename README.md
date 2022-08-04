@@ -17,7 +17,7 @@ Teacher preferences (acquired by interviewing actual teachers), administrative p
 ![Setup screenshot](images/weight_zero_bipartite.png)
 
 
-### Algorithms 
+### Algorithms Considered: 
 #### Brute Force 
 A naive approach might be to systematically try every combination and compare the weighted values, ultimately choosing the assignment(s) that have the least weight. This approach would take O(n!) in the size of the input which is clearly untenable for even medium-sized inputs, however logical and easy-to-understand. A brute force or naive approach could be implemented many ways and one way is included here. This approach has a time complexity of O(n!) so it will only run with very small inputs. 
 
@@ -25,6 +25,9 @@ A naive approach might be to systematically try every combination and compare th
 On average, pruning can improve the naive approach by skipping any partial assignment whose cost already exceeds a complete assignment. In the worst case scenario this method would still have a time complexity of n!. A version of this method is included. 
 
 #### Variable Ordering
+Building on Naive Plus Backtracking and Pruning, a further improvement can be made by strategically ordering variables, with the teachers with the most restrictions going first. This has the advantage, at least in this classroom assignment context of being intuitive as it reflects what a human might do if assigning rooms by hand. Variable ordering is not as simple as it might seem at first glance, however, as first we must define "most restrictive" and in some cases this is not obvious. 
+
+#### Constraint ordering 
 
 
 #### Kuhn-Munkres Algorithm (also known as the Munkres or Hungarian Algorithm) 
