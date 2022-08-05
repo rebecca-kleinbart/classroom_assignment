@@ -50,6 +50,8 @@ https://web.eecs.umich.edu/~pettie/matching/Kuhn-variants-of-hungarian-assignmen
 #### Kuhn-Munkres Algorithm with Backtracking
 https://www.sciencedirect.com/science/article/pii/S0304397516000037
 
+#### Linear Sum 
+
 ### Software requirements:
 Python 3
 
