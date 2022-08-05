@@ -34,7 +34,7 @@ On average, pruning can improve the naive approach by skipping any partial assig
 Building on Naive Plus Backtracking and Pruning, a further improvement can be made by strategically ordering variables, with the teachers with the most restrictions going first. This has the advantage, at least in this classroom assignment context of being intuitive as it reflects what a human might do if assigning rooms by hand. Variable ordering is not as simple as it might seem at first glance, however, as first we must define "most restrictive" and in some cases this is not obvious. 
 
 #### Constraint ordering 
-______ writes about going beyond variable and value ordering to strategically ordering soft constraints using the algorithm _____. 
+Salido and Barber write about going beyond variable and value ordering to strategically ordering soft constraints using the algorithm HASCOH. 
 
 #### Kuhn-Munkres Algorithm (also known as the Munkres or Hungarian Algorithm) 
 The **Kuhn-Munkres Algorithm** is a significant improvement from the naive approach. Its running time to O(n^4) or O(n^3), depending on the variation chosen. It is a linear combinatorial optimization algorithm, _and used without modification is not an example of artificial intelligence. (insert and apply definition from R & N)_
