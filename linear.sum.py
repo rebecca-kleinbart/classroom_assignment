@@ -1,37 +1,21 @@
 from scipy.optimize import linear_sum_assignment
 import numpy as np
+from dictionary_to_list import dict_of_weights_to_list_of_lists_of_weights as dict_to_list
+from mels_teachers_rooms_weights import G, teachers, rooms
+
+import networkx as nx
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+import matplotlib.colors as mcolors
+
+import pandas as pd
+from networkx.algorithms import bipartite
+from networkx.drawing.layout import bipartite_layout
+from draw_bipartite import draw_bipartite_solution
+
 
 def main():
-
-    cost = np.array([
-    [20, 20, 20, 20, 0, 20, 100, 20, 120, 0, 20, 20, 20, 20, 20, 20, 20, 0, 120, 120, 80, 120, 0, 20, 20, 80, 20, 120],
-    [20, 20, 20, 20, 0, 20, 0, 20, 120, 0, 20, 20, 20, 20, 20, 20, 20, 20, 120, 120, 80, 120, 0, 20, 20, 80, 20, 120],
-    [20, 20, 20, 20, 0, 20, 100, 20, 120, 0, 20, 20, 20, 0, 20, 20, 20, 20, 120, 120, 80, 120, 0, 20, 20, 80, 20, 120],
-    [20, 20, 20, 20, 0, 20, 100, 20, 120, 0, 0, 20, 0, 20, 20, 20, 20, 20, 120, 120, 80, 120, 0, 20, 20, 80, 20, 120],
-    [20, 20, 20, 0, 0, 20, 100, 20, 120, 0, 20, 20, 20, 20, 0, 20, 20, 20, 120, 120, 80, 120, 0, 20, 20, 80, 20, 120],
-    [20, 20, 20, 20, 0, 20, 100, 20, 120, 0, 20, 20, 20, 20, 20, 20, 20, 20, 120, 120, 80, 120, 0, 20, 20, 80, 0, 120],
-    [20, 20, 20, 20, 0, 20, 100, 20, 120, 0, 20, 0, 20, 20, 20, 20, 20, 20, 120, 120, 80, 120, 0, 20, 20, 80, 20, 120],
-    [20, 20, 20, 20, 0, 20, 100, 0, 120, 0, 20, 20, 20, 20, 20, 20, 20, 20, 120, 120, 80, 120, 0, 20, 20, 80, 20, 120],
-    [20, 0, 20, 20, 0, 20, 100, 20, 120, 0, 20, 20, 20, 20, 20, 20, 20, 20, 120, 120, 80, 120, 0, 20, 20, 80, 20, 120],
-    [20, 20, 20, 20, 0, 20, 100, 20, 120, 0, 20, 20, 20, 20, 20, 20, 20, 20, 120, 120, 80, 120, 0, 20, 0, 80, 20, 120],
-    [20, 20, 20, 20, 0, 20, 100, 20, 120, 0, 20, 20, 20, 20, 20, 20, 0, 20, 120, 120, 80, 120, 0, 20, 20, 80, 20, 120],
-    [20, 20, 20, 20, 0, 20, 100, 20, 120, 0, 20, 20, 20, 20, 20, 20, 20, 20, 120, 120, 80, 120, 0, 0, 20, 80, 20, 120],
-    [20, 20, 20, 20, 0, 20, 100, 20, 120, 0, 20, 20, 20, 20, 20, 0, 20, 20, 120, 120, 80, 120, 0, 20, 20, 80, 20, 120],
-    [20, 20, 0, 20, 0, 20, 100, 20, 120, 0, 20, 20, 20, 20, 20, 20, 20, 20, 120, 120, 80, 120, 0, 20, 20, 80, 20, 120],
-    [20, 20, 20, 20, 0, 20, 100, 20, 120, 0, 20, 20, 20, 20, 20, 20, 20, 20, 120, 120, 0, 120, 0, 20, 20, 20, 20, 120],
-    [20, 20, 20, 20, 0, 20, 100, 20, 0, 0, 20, 20, 20, 20, 20, 20, 20, 20, 120, 20, 60, 120, 0, 20, 20, 60, 20, 20],
-    [20, 20, 20, 20, 0, 20, 100, 20, 120, 0, 20, 20, 20, 20, 20, 20, 20, 20, 120, 120, 60, 120, 0, 20, 20, 0, 20, 120],
-    [20, 20, 20, 20, 0, 20, 100, 20, 20, 0, 20, 20, 20, 20, 20, 20, 20, 20, 120, 20, 60, 120, 0, 20, 20, 60, 20, 0],
-    [20, 20, 20, 20, 0, 0, 100, 20, 20, 0, 20, 20, 20, 20, 20, 20, 20, 20, 120, 0, 60, 120, 0, 20, 20, 60, 20, 20],
-    [20, 20, 20, 20, 0, 20, 100, 20, 120, 0, 20, 20, 20, 20, 20, 20, 20, 20, 120, 120, 80, 120, 0, 20, 20, 80, 20, 120],
-    [40, 40, 40, 40, 0, 40, 120, 40, 140, 20, 20, 20, 40, 40, 40, 40, 40, 40, 0, 140, 100, 20, 20, 40, 40, 100, 40, 140],
-    [40, 40, 40, 40, 0, 40, 120, 40, 140, 20, 20, 20, 40, 40, 40, 40, 40, 40, 20, 140, 100, 0, 20, 40, 40, 100, 40, 140],
-    [60, 60, 60, 60, 0, 60, 140, 60, 160, 40, 60, 60, 60, 60, 60, 60, 60, 60, 160, 160, 120, 160, 60, 60, 60, 120, 60, 160],
-    [60, 60, 60, 60, 0, 60, 140, 60, 160, 40, 60, 60, 60, 60, 60, 60, 60, 60, 160, 160, 120, 160, 60, 60, 60, 120, 60, 160],
-    [60, 60, 60, 60, 0, 60, 140, 60, 160, 40, 60, 60, 60, 60, 60, 60, 60, 60, 160, 160, 120, 160, 60, 60, 60, 120, 60, 160],
-    [60, 60, 60, 60, 0, 60, 140, 60, 160, 40, 60, 60, 60, 60, 60, 60, 60, 60, 160, 160, 120, 160, 60, 60, 60, 120, 60, 160],
-    [60, 60, 60, 60, 0, 60, 140, 60, 160, 40, 60, 60, 60, 60, 60, 60, 60, 60, 160, 160, 120, 160, 60, 60, 60, 120, 60, 160],
-    [60, 60, 60, 60, 0, 60, 140, 60, 160, 40, 60, 60, 60, 60, 60, 60, 60, 60, 160, 160, 120, 160, 60, 60, 60, 120, 60, 160]])
+    cost = np.array(dict_to_list(G))
 
     row_ind, col_ind = linear_sum_assignment(cost)
 
@@ -43,50 +27,54 @@ def main():
     print(optimal_assignment)
     print(total_cost)
 
-    teachers = ['Ali','Archaga','Baxter','Bright', 'Cas', 'Ellis', 'Farnham', 'Gary', 'Gostomski', 'Hendrick', 'Hurth', 'King', 'Kleinbart', 'Lotti', 'Masco', 'Maxfield', 'Morales', 'Newberger', 'Priestley', 'Robins', 'Rosenberg', 'Satriano', 'Sewall', 'Stern', 'Wallace', 'Winter', 'Wolff','Zaino']
-    rooms = ['0072','0089','1007', '1101','1103','2067','2071','2073','2075','2077','2101','2106','3071','3073','3077','4068A','4068B','4073','4077','4078','GymA','GymB','Float1','Float2','Float3','Float4','Float5','Float6']
-
-
     #printing out optimal solution
+    solution = []
     for x in range(len(optimal_assignment)):
         temp_teacher = teachers[x]
         temp_room = rooms[optimal_assignment[x]]
+        temp_tuple = (temp_teacher, temp_room,G[temp_teacher][temp_room])
+        print(temp_tuple)
+        solution.append(temp_tuple)
 
-        print(temp_teacher, ":", temp_room )
+    print(solution)
+    draw_bipartite_solution(solution)
 
+    return solution
 
 if __name__ == '__main__':
     main()
 
 
 
-# Based on the above cost array, the printed output will be [17  6 13 10  3 26 11  7  1 24 16 23 15  2 20  8 25 27 19 22 18 21  4  9
-#  0 12 14  5] which translates to the following assignment (also printed out).
 
-#   Ali : 4073
-#   Archaga : 2071
-#   Baxter : 3073
-#   Bright : 2101
-#   Cas : 1101
-#   Ellis : Float5
-#   Farnham : 2106
-#   Gary : 2073
-#   Gostomski : 0089
-#   Hendrick : Float3
-#   Hurth : 4068B
-#   King : Float2
-#   Kleinbart : 4068A
-#   Lotti : 1007
-#   Maxfield : 2075
-#   Morales : Float4
-#   Newberger : Float6
-#   Priestley : 4078
-#   Robins : Float1
-#   Rosenberg : 4077
-#   Satriano : GymB
-#   Sewall : 1103
-#   Stern : 2077
-#   Wallace : 0072
-#   Winter : 3071
-#   Wolff : 3077
-#   Zaino : 2067
+""" Solution is below:
+Ali : Float4
+Archaga : 2075
+Baxter : 3073
+Bright : 1103
+Cas : Float1
+Ellis : Float6
+Farnham : 0089
+Gary : 2073
+Gostomski : 4068A
+Hendrick : 2067
+Hurth : 1101
+King : 2071
+Kleinbart : Float3
+Lotti : 1007
+Masco : Float2
+Maxfield : 3071
+Morales : 2101
+Newberger : 0072
+Priestley : GymA
+Robins : 4077
+Rosenberg : 3077
+Satriano : GymB
+Sewall : 4078
+Stern : 2106
+Wallace : 2077
+Winter : 4068B
+Wolff : Float5
+Zaino : 4073
+
+"""
