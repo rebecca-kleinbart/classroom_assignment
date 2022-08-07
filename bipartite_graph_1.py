@@ -1,35 +1,52 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
 import pandas as pd
 from networkx.algorithms import bipartite
 from networkx.drawing.layout import bipartite_layout
+from mels_teachers_rooms_weights import G, teachers, rooms
+
+
+'''Running this program creates a bipartite graph with one set of nodes
+being the teachers and the other set being the rooms. The edges connect
+zero-weighted pairs '''
+
+
+def get_teacher_room_weighted_zero_edges(dict_of_dicts):
+    '''The function,  get_teacher_room_weighted_zero_edges, m takes as input the dictionary of dictionaries
+    which has names of teachers as outer keys and a dictionary of rooms
+    and their respective weights for that teacher as the outer value.
+
+    The function outputs a list of tuples that contain the edges of the graph.
+    Each edge connects a teacher and a room, if the respective weight of that room
+    in the input equals zero. '''
+
+    edges = []
+    for teacher in dict_of_dicts.items():
+        for key in teacher[1].items():
+            if key[1] == 0:
+                temp_tuple = (teacher[0], key[0])
+                edges.append(temp_tuple)
+    return edges
+
+
 
 def main():
+    #create the graph using the imported from mels_teachers_rooms_weights and edges from the function, get_teacher_room_weighted_zero_edges, above.
+    H = nx.Graph()
+    H.add_nodes_from(teachers, bipartite = 0)
+    H.add_nodes_from(rooms, bipartite = 1)
+    edge_list = get_teacher_room_weighted_zero_edges(G)
+    H.add_edges_from(edge_list)
 
-    teachers = ['Ali','Archaga','Baxter','Bright', 'Cas', 'Ellis', 'Farnham', 'Gary', 'Gostomski', 'Hendrick', 'Hurth', 'King', 'Kleinbart', 'Lotti', 'Masco', 'Maxfield', 'Morales', 'Newberger', 'Priestley', 'Robins', 'Rosenberg', 'Satriano', 'Sewall', 'Stern', 'Wallace', 'Winter', 'Wolff','Zaino']
-    rooms = ['0072','0089','1007', '1101','1103','2067','2071','2073','2075','2077','2101','2106','3071','3073','3077','4068A','4068B','4073','4077','4078','GymA','GymB','Float1','Float2','Float3','Float4','Float5','Float6']
+    if bipartite.is_bipartite:
+        nx.draw_networkx(H, pos = nx.drawing.layout.bipartite_layout(H, teachers ), node_size = 100, node_color = 'gray', width = 2, edge_color = (0,1,0))
+        print("Graph drawn")
+        plt.title("Graph of All Zero-Weight Edges")
+        plt.show()
+        plt.figure(1)
+        plt.close(1)
 
-    G = nx.Graph()
-
-    #G.add_nodes_from(['Ali','Archaga','Baxter','Bright', 'Cas', 'Ellis', 'Farnham', 'Gary', 'Gostomski', 'Hendrick', 'Hurth', 'King', 'Kleibart', 'Lotti', 'Masco', 'Maxfield', 'Morales', 'Newberger', 'Priestley', 'Robins', 'Rosenberg', 'Satriano', 'Sewall', 'Stern', 'Wallace', 'Winter', 'Wolff','Zaino'], bipartite=0)
-    G.add_nodes_from(teachers, bipartite = 0)
-    #G.add_nodes_from(['0072','0089','1007', '1101','1103','2067','2071','2073','2075','2077','2101','2106','3071','3073','3077','4068A','4068B','4073','4077','4078','GymA','GymB','Float1','Float2','Float3','Float4','Float5','Float6'],bipartite=1)
-    G.add_nodes_from(rooms, bipartite = 1)
-    #bottom_nodes, top_nodes = bipartite.sets(G)
-
-    G.add_edges_from([('Archaga', "2075"),('Baxter', "3075"),('Bright', "1103"),('Cas', "0072"),('Cas', "0089"),('Cas', "1077"),('Cas', "1101"),('Cas', "1103"),('Cas', "2067"),('Cas', "2071"),('Cas', "2073"),('Cas', "2075"),('Cas', "2077"),('Cas', "2101"),('Cas', "2106"),('Cas', "3071"),('Cas', "3073"),('Cas', "3077"),('Cas', "4068A"),('Cas', "4068B"),('Cas', "4073"),('Cas', "4077"),('Cas', "4078"),('Cas', "GymA"),('Cas', "GymB"),('Cas', "Float1"),('Cas', "Float2"),('Cas', "Float3"),('Cas', "Float4"),('Cas', "Float5"),('Cas', "Float6"),('Ellis', "4077"),('Farnham', "0089"),('Gary', "2073"),('Gostomski', "4068"),('Hendrick', "0072"),('Hendrick', "0089"),('Hendrick', "1077"),('Hendrick', "1101"),('Hendrick', "1103"),('Hendrick', "2067"),('Hendrick', "2071"),('Hendrick', "2073"),('Hendrick', "2075"),('Hendrick', "2077"),('Hendrick', "2101"),('Hendrick', "2106"),('Hendrick', "3071"),('Hendrick', "3073"),('Hendrick', "3077"),('Hendrick', "4068A"),('Hendrick', "4068B"),('Hendrick', "4073"),('Hendrick', "4077"),('Hendrick', "4078"),('Hurth', "1101"),('King', "2071"),('Kleinbart', "1101"),('Lotti', "1077"),('Masco', "1103"),('Maxfield', "3071"),('Morales', "2101"),('Newberger', "0072"),('Priestley', "GymA"),('Rosenberg',"3077"),('Robins', "3077"),('Satriano', "GymB"),('Hurth', "1101"),('Sewall', "0072"),('Sewall', "0089"),('Sewall', "1077"),('Sewall', "1101"),('Sewall', "1103"),('Sewall', "2067"),('Sewall', "2071"),('Sewall', "2073"),('Sewall', "2075"),('Sewall', "2077"),('Sewall', "2101"),('Sewall', "2106"),('Sewall', "3071"),('Sewall', "3073"),('Sewall', "3077"),('Sewall', "4068A"),('Sewall', "4068B"),('Sewall', "4073"),('Sewall', "4077"),('Sewall', "4078"),('Stern', "2106"),('Wallace', "2077"),('Winter', "4068B"),('Wolff', "2067"),('Zaino', "4073")])
-    print(bipartite.is_bipartite(G))
-
-    #pos = bipartite_layout(G,teachers)
-    nx.draw_networkx(G, pos = nx.drawing.layout.bipartite_layout(G, teachers ), node_size = 100, node_color = 'gray', width = 2, edge_color = 'green')
-    print("Graph drawn")
-    plt.show()
-    plt.figure(1)
-    print("figure shown")
-    plt.close(1)
-    print("Graph shown")
-    print("Everything is done.")
-
+    else:
+        print("Could not print bipartite graph")
 if __name__ == '__main__':
     main()
