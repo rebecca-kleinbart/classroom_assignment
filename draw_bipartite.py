@@ -6,7 +6,7 @@ from networkx.drawing.layout import bipartite_layout
 
 from mels_teachers_rooms_weights import G, teachers, rooms
 
-def draw_bipartite_solution(S_Graph, title_of_graph = "Bipartite Graph"):
+def draw_bipartite_solution(S_Graph, title_of_graph = "Bipartite Graph", total_cost = ""):
     """Input: A list of tuples with teacher name, room, and weight (created as solution to  assignment) and string for a title
        Output: Draws and displays bipartite graph. """
 
@@ -29,6 +29,8 @@ def draw_bipartite_solution(S_Graph, title_of_graph = "Bipartite Graph"):
         print(rgb_colors)
         plt.title(title_of_graph)
         plt.suptitle("Bright Green = 0 \n Black = 160",x = .9, y = .95 , fontsize=8)
+        #cost_label = "total cost = " + total_cost
+        plt.xlabel("total cost = " + str(total_cost))
         nx.draw_networkx(Solution_Graph, pos = nx.drawing.layout.bipartite_layout(Solution_Graph, teachers ), node_size = 100, node_color = 'gray', width = 2, edge_color = rgb_colors)
         plt.show()
         plt.figure(1)
