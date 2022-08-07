@@ -23,8 +23,8 @@ In order to quantify the importance of each constraint being met, each preferenc
 
 The image below shows all of the possible matches with a weight of zero. We can see that for some teachers, more than one room has a cost of zero and for others no rooms have a cost of zero. If we had a one-to-one correspondance between teachers and rooms, of course we would not have a problem requiring artificial intelligence, or indeed any multi-step algorithms. However in this case, and many others, we need to be systematic to choose the best assignment. 
 
-![Setup screenshot](images/weight_zero_bipartite.png)
-***change image when there is service to upload correct image.***
+![Setup screenshot](images/cost_matrix_visual_snippet.png)
+***Add image.***
 
 ### Approach: 
 We approach the Classroom Assignment in two ways: first viewing the problem as a linear combinatorial optimization problem and using AI techniques to find the minimum sum of the cost matrix. 
@@ -33,6 +33,7 @@ This first approach is further divided into two subparts:
 1b) Utilizing linear sum minimization techniques and attempting to speed up this process further with pruning and forward checking. 
 
 The second approach views the problems as Constraint Satisfaction Problem and models each requirement and preference as a hard and soft constraint respectively. CSPs can also be solved more quickly with algorithmic speedups. 
+
 
 #### Brute Force 
 A naive approach might be to systematically try every combination and compare the weighted values, ultimately choosing the assignment(s) that have the least weight. This approach would take O(n!) in the size of the input which is clearly untenable for even medium-sized inputs, however logical and easy-to-understand. A brute force or naive approach could be implemented many ways and one way is included here. This approach has a time complexity of O(n!) so it will only run with very small inputs. 
@@ -73,15 +74,28 @@ Python 3
 ### How to run:
 
 ### Connections to AI topics:
+This project in an example of planning. From the github repository connected with our textbook (https://github.com/aimacode/aima-python/blob/master/classical_planning_approaches.ipynb) : 
+> Planning combines the two major areas of AI: search and logic. A planner can be seen either as a program that searches for a solution or as one that constructively proves the existence of a solution. Currently, the most popular and effective approaches to fully automated planning are:
+
+> - searching using a planning graph;
+> - state-space search with heuristics;
+> - translating to a constraint satisfaction (CSP) problem;
+> - translating to a boolean satisfiability (SAT) problem.
+
+In this project we did a state-space search with heuristics and translated our problem to a constraint satisfaction problem. 
 
 ### Future work and next steps
+#### Continue Improving Existing Approaches
+We can improve the heuristics for the first approach, and more fully complete the CSP (second approach), representing all soft constraints mathematically and in our code. Also the cost matrix may be improved by returning to relevant real-world parties (teachers and administrators) and considering results and modifying as needed. 
+
 #### Increasing complexity of constraints
 For the purposes of simplification, time constraints, coteachers, and neighbor preferences were not considered. These would dramatically increase the complexity of the problem modeling, and finding solutions that take these considerations into account would make the AI assignment process even more valuable. 
+
 
 #### Additional Algorithms
 There are many algorithms tried with related or similar problems that could be applied to this problem as well. For instance, Deep Neural Networks, genetic algorithms and simulated annealing (see http://www.iaeng.org/IJAM/issues_v36/issue_1/IJAM_36_1_7.pdf) 
 
-**Add sources**. 
+#### Selected References (see paper for complete list): 
 
 
 
