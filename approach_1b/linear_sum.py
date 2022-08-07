@@ -1,5 +1,3 @@
-#TODO: Add comments
-
 from scipy.optimize import linear_sum_assignment
 import numpy as np
 from dictionary_to_list import dict_of_weights_to_list_of_lists_of_weights as dict_to_list
