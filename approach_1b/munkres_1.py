@@ -1,6 +1,3 @@
-#TODO: Make output readable
-#TODO: Credit source
-
 from munkres import Munkres, print_matrix
 from dictionary_to_list import dict_of_weights_to_list_of_lists_of_weights as dict_to_list
 from mels_teachers_rooms_weights import G, teachers, rooms
