@@ -1,4 +1,3 @@
-#TODO: add comments
 #TODO: Improve variable ordering / heuristic
 
 import time
