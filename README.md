@@ -24,9 +24,16 @@ In order to quantify the importance of each constraint being met, each preferenc
 The image below shows all of the possible matches with a weight of zero. We can see that for some teachers, more than one room has a cost of zero and for others no rooms have a cost of zero. If we had a one-to-one correspondance between teachers and rooms, of course we would not have a problem requiring artificial intelligence, or indeed any multi-step algorithms. However in this case, and many others, we need to be systematic to choose the best assignment. 
 
 ![Setup screenshot](images/weight_zero_bipartite.png)
+***change image when there is service to upload correct image.***
 
+### Approach: 
+We approach the Classroom Assignment in two ways: first viewing the problem as a linear combinatorial optimization problem and using AI techniques to find the minimum sum of the cost matrix. 
+This first approach is further divided into two subparts: 
+1a) Using depth-first-search to find the minimum cost in a search tree, improving the naive approach with backtracking, variable ordering, and pruning.
+1b) Utilizing linear sum minimization techniques and attempting to speed up this process further with pruning and forward checking. 
 
-### Algorithms Considered: 
+The second approach views the problems as Constraint Satisfaction Problem and models each requirement and preference as a hard and soft constraint respectively. CSPs can also be solved more quickly with algorithmic speedups. 
+
 #### Brute Force 
 A naive approach might be to systematically try every combination and compare the weighted values, ultimately choosing the assignment(s) that have the least weight. This approach would take O(n!) in the size of the input which is clearly untenable for even medium-sized inputs, however logical and easy-to-understand. A brute force or naive approach could be implemented many ways and one way is included here. This approach has a time complexity of O(n!) so it will only run with very small inputs. 
 
@@ -35,6 +42,11 @@ On average, pruning can improve the naive approach by skipping any partial assig
 
 #### Variable Ordering
 Building on Naive Plus Backtracking and Pruning, a further improvement can be made by strategically ordering variables, with the teachers with the most restrictions going first. This has the advantage, at least in this classroom assignment context of being intuitive as it reflects what a human might do if assigning rooms by hand. Variable ordering is not as simple as it might seem at first glance, however, as first we must define "most restrictive" and in some cases this is not obvious. 
+
+Below we can see a visualization of the time 
+
+![Setup screenshot](images/weight_zero_bipartite.png)
+
 
 #### Constraint ordering 
 Salido and Barber write about going beyond variable and value ordering to strategically ordering soft constraints using the algorithm HASCOH. 
