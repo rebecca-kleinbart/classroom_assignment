@@ -28,7 +28,7 @@ def main():
         solution.append(temp_tuple)
 
     print(solution)
-    draw_bipartite_solution(solution, "Bipartite Graph of Linear Sum Assignment")
+    draw_bipartite_solution(solution, "Bipartite Graph of Linear Sum Assignment", total_cost)
 
     return solution, total_cost
 
