@@ -5,13 +5,16 @@
 ### Course: A.I. (CSCI 761 / CSC 740), Dr. Anita Raja, Spring 2022
 
 ### Classroom Assignment
-How can teachers be assigned to classrooms in "the best" way or in a "good" way that meets hard and soft constraints prioritizing some constraints over others? This project uses a very specific set of constraints from a particular high school to illustrate and compare methods of classroom assignment that can be applied to other settings, needs, and indeed, contexts. 
+How can teachers be assigned to classrooms in "the best" way or in a "good" way that meets hard and soft constraints prioritizing some constraints over others? This project uses a very specific set of constraints from a particular high school to illustrate and compare methods of assignment that can be applied to other settings, needs, and indeed, contexts. 
 
 
 ### Constraints
-The constraints for this particular assignment problem came from preferences (acquired by interviewing actual teachers), administrative preferences, and space limitations. Please see apendix for more details.  The algorithms considered can all be applied to other constraints by modifying the cost matrices. 
+The constraints for this particular assignment problem came from teacher preferences, administrative preferences (acquired by interviewing teachers and administration professionals), and space limitations of a particular high school. Please see appendix ____ for more details, including simplifying assumptions.  The algorithms considered can all be applied to other constraints by modifying the cost matrices and/or constraints as needed. 
 
-The particular constraints and cost matrices can be found... ***Add exactly where to find this ** Based on the constraints that emerged, this problem can be reduced the "transportation problem". See here for more details: https://en.wikipedia.org/wiki/Transportation_theory_(mathematics). 
+The particular constraints and cost matrices can be found... ***Add exactly where to find this **  and a snippet of the cost matrix is below. 
+![Setup screenshot](images/weight_zero_bipartite_winter.png)
+
+Based on the constraints that emerged, this problem can be reduced to the "transportation problem". See here for more details: https://en.wikipedia.org/wiki/Transportation_theory_(mathematics). 
 
 ### Weights
 In order to quantify the importance of each constraint being met, each preference was given a numerical value. A value of zero indicates that there was no issue with assigning a particular teacher to that room. In some cases particular rooms and teacher matches violated more than one constraint so these values were added. Below we can see a visual example of the cost of assigning one particular teacher, Winter, to all the available rooms. The brighter, light green represents zero cost and the darker the color, the higher the cost. 
