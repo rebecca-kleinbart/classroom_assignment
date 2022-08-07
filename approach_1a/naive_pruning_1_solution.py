@@ -1,5 +1,3 @@
-#TODO: add more comments
-
 import time
 
 from itertools import permutations
