@@ -4,6 +4,8 @@ from mels_teachers_rooms_weights import G, teachers, rooms
 from tabulate import tabulate
 from dictionary_to_list import dict_of_weights_to_list_of_lists_of_weights as dict_to_list
 
+"""Prints out cost matrix in two readable formats  """
+
 def list_to_numpy(listy):
     lst = listy
     a = np.array(lst)
