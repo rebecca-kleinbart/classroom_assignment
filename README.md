@@ -69,7 +69,10 @@ https://www.sciencedirect.com/science/article/pii/S0304397516000037
 #### Linear Sum 
 
 ### Software requirements:
-Python 3
+Python 3.10.5 was used. 
+Libraries used include networkx, matplotlib, and pandas for visualizing the bipartite graphs, numpy, pandas, and tabulate to visualize the cost matrix, itertools to create permutations, scipy for one implementation of the linear sum assignment, hungarian_algorithm for one implementation of the Kuhn-Munkres algorithm, and ortools.sat.python for a second implementation of linear sum minimization. Finally time was used to calculate running time of the different implementations of approach 1a. 
+
+****Check to make sure no other libraries were used! ****
 
 ### How to run:
 
