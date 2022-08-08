@@ -11,7 +11,7 @@ How can teachers be assigned to classrooms in "the best" way or in a "good" way 
 ### Constraints
 The constraints for this particular assignment problem came from teacher preferences, administrative preferences (acquired by interviewing teachers and administration professionals), and space limitations of a particular high school. Please see appendix ____ for more details, including simplifying assumptions.  The algorithms considered can all be applied to other constraints by modifying the cost matrices and/or constraints as needed. 
 
-The particular constraints and cost matrices can be found... ***Add exactly where to find this **  and a snippet of the cost matrix is below. 
+The particular constraints and entire cost matrices can be found ***Add exactly where to find this **  and a snippet of the cost matrix is below. 
 ![Setup screenshot](images/cost_matrix_visual_snippet.png)
 
 Based on the constraints that emerged, this problem can be reduced to the "transportation problem". See here for more details: https://en.wikipedia.org/wiki/Transportation_theory_(mathematics). 
