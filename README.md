@@ -16,7 +16,7 @@ Based on the constraints that emerged, this problem can be reduced to the "trans
 ### Weights
 In order to quantify the importance of each constraint being met, each preference was given a numerical value. A value of zero indicates that there was no issue with assigning a particular teacher to that room. In some cases particular rooms and teacher matches violated more than one constraint so these values were added. Below we can see a visual example of the cost of assigning one particular teacher, Winter, to all the available rooms. The brighter, light green represents zero cost and the darker the color, the higher the cost. 
 
-![Setup screenshot](images/weight_zero_bipartite_winter.png)
+![Setup screenshot](images/weight_zero_bipartite.png)
 
 The image below shows all of the possible matches with a weight of zero. We can see that for some teachers, more than one room has a cost of zero and for others no rooms have a cost of zero. If we had a one-to-one correspondance between teachers and rooms, of course we would not have a problem requiring artificial intelligence, or indeed any multi-step algorithms. However in this case, and many others, we need to be systematic to choose the best assignment. 
 
