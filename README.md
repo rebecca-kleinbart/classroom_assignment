@@ -18,8 +18,9 @@ In order to quantify the importance of each constraint being met, each preferenc
 
 ![Setup screenshot](images/weight_zero_bipartite.png)
 
-The image below shows all of the possible matches with a weight of zero. We can see that for some teachers, more than one room has a cost of zero and for others no rooms have a cost of zero. If we had a one-to-one correspondance between teachers and rooms, of course we would not have a problem requiring artificial intelligence, or indeed any multi-step algorithms. However in this case, and many others, we need to be systematic to choose the best assignment. 
+The image above shows all of the possible matches with a weight of zero. We can see that for some teachers, more than one room has a cost of zero and for others no rooms have a cost of zero. If we had a one-to-one correspondance between teachers and rooms, of course we would not have a problem requiring artificial intelligence, or indeed any multi-step algorithms. However in this case, and many others, we need to be systematic to choose the best assignment. 
 
+Below we see an excerpt of the cost matrix for all teachers and rooms. 
 ![Setup screenshot](images/cost_matrix_visual_snippet.png)
 
 ### Approach: 
