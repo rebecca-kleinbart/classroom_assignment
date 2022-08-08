@@ -9,10 +9,7 @@ How can teachers be assigned to classrooms in "the best" way or in a "good" way 
 
 
 ### Constraints
-The constraints for this particular assignment problem came from teacher preferences, administrative preferences (acquired by interviewing teachers and administration professionals), and space limitations of a particular high school. Please see appendix ____ for more details, including simplifying assumptions.  The algorithms considered can all be applied to other constraints by modifying the cost matrices and/or constraints as needed. 
-
-The particular constraints and entire cost matrices can be found ***Add exactly where to find this **  and a snippet of the cost matrix is below. 
-![Setup screenshot](images/cost_matrix_visual_snippet.png)
+The constraints for this particular assignment problem came from teacher preferences, administrative preferences (acquired by interviewing teachers and administration professionals), and space limitations of a particular high school. Please see Appendix A for more details (A photo is here: https://github.com/rebecca-kleinbart/classroom_assignment/blob/1ed875507c00fefc0384360fc46cfb7bdf89ef15/images/Constraint_Tiers.png), including simplifying assumptions.  The algorithms considered can all be applied to other constraints by modifying the cost matrices and/or constraints as needed. 
 
 Based on the constraints that emerged, this problem can be reduced to the "transportation problem". See here for more details: https://en.wikipedia.org/wiki/Transportation_theory_(mathematics). 
 
@@ -24,7 +21,6 @@ In order to quantify the importance of each constraint being met, each preferenc
 The image below shows all of the possible matches with a weight of zero. We can see that for some teachers, more than one room has a cost of zero and for others no rooms have a cost of zero. If we had a one-to-one correspondance between teachers and rooms, of course we would not have a problem requiring artificial intelligence, or indeed any multi-step algorithms. However in this case, and many others, we need to be systematic to choose the best assignment. 
 
 ![Setup screenshot](images/cost_matrix_visual_snippet.png)
-***Add image.***
 
 ### Approach: 
 We approach the Classroom Assignment in two ways: first viewing the problem as a linear combinatorial optimization problem and using AI techniques to find the minimum sum of the cost matrix. 
