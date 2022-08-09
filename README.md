@@ -41,7 +41,7 @@ On average, pruning can improve the naive approach by skipping any partial assig
 #### Variable Ordering
 Building on Naive Plus Backtracking and Pruning, a further improvement can be made by strategically ordering variables, with the teachers with the most restrictions going first. This has the advantage, at least in this classroom assignment context of being intuitive as it reflects what a human might do if assigning rooms by hand. Variable ordering is not as simple as it might seem at first glance, however, as first we must define "most restrictive" and in some cases this is not obvious. 
 
-Below we can see a visualization of the time 
+Below we can see a visualization of the time.
 
 ![Setup screenshot](images/weight_zero_bipartite.png)
 
@@ -97,5 +97,8 @@ There are many algorithms tried with related or similar problems that could be a
 
 #### Selected References (see paper for complete list): 
 
+Crouse, D. F. (2016). On implementing 2D rectangular assignment algorithms. IEEE Transactions on Aerospace and Electronic Systems, 52(4), 1679–1696. doi:10.1109/taes.2016.14095
+
+Kuhn, H. W. (1956). Variants of the hungarian method for assignment problems. Naval Research Logistics Quarterly, 3(4), 253–258. doi:10.1002/nav.3800030404 
 
 
